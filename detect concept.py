@@ -5,7 +5,6 @@ from ultralytics import YOLO
 from shapely.geometry import Polygon
 from math import atan2, degrees, sqrt
 
-# 加载YOLOv8模型
 model = YOLO("yolov10n.pt")
 
 # 打开视频文件
