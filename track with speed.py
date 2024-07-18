@@ -13,7 +13,7 @@ cv2.CAP_PROP_FPS))
 
 print(w,h,fps)
 
-line_pts = [(0, 540), (1280, 540)]
+line_pts = [(0, 3/4*h), (w, 3/4*h)]
 
 speed_obj = solutions.SpeedEstimator(reg_pts=line_pts,
                                      names=names,
