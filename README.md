@@ -16,6 +16,8 @@
 评估需要更多的维度使其更科学
 
 仔细研究：https://blog.csdn.net/Kefenggewu_/article/details/123348800
+数据集：https://www.kaggle.com/datasets/javiersanchezsoriano/traffic-images-captured-from-uavs/data
+数据集：https://universe.roboflow.com/carlos-andres-wilches-perez/cct-drone
 
 
 
