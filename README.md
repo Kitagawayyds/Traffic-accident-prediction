@@ -10,7 +10,7 @@
 
 **概念阶段：**
 
-![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/output.gif)
+![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/output.mp4)
 
 需要解决的问题：
 1. 加速度没有归一化
