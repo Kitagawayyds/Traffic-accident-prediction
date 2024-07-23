@@ -5,11 +5,22 @@ from ultralytics import YOLO
 from shapely.geometry import Polygon
 from math import atan2, degrees, sqrt
 
+# 加载YOLO模型
 model = YOLO("yolov10n.pt")
 
 # 打开视频文件
-video_path = "normal1.mp4"
+video_path = "accident.mp4"
 cap = cv2.VideoCapture(video_path)
+
+# 获取视频帧的宽度和高度
+frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+fps = int(cap.get(cv2.CAP_PROP_FPS))
+
+# 创建视频写入对象
+output_path = "output.mp4"
+fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+out = cv2.VideoWriter(output_path, fourcc, fps, (frame_width, frame_height))
 
 # 存储轨迹历史和风险评分
 track_history = defaultdict(lambda: [])
@@ -153,6 +164,8 @@ while cap.isOpened():
                 print(f"Collision detected between ID: {id1} and ID: {id2}")
                 cv2.putText(annotated_frame, f"Collision between ID: {id1} and ID: {id2}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
+            # 写入视频帧
+            out.write(annotated_frame)
             cv2.imshow("Tracking", annotated_frame)
 
         if cv2.waitKey(1) & 0xFF == ord("q"):
@@ -161,6 +174,7 @@ while cap.isOpened():
         break
 
 cap.release()
+out.release()
 cv2.destroyAllWindows()
 
 # 将轨迹历史和风险评分保存到txt文件
