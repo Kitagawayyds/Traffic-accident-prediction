@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 from ultralytics import YOLO, solutions
 
-# 加载YOLOv8模型
+# 加载YOLO模型
 model = YOLO("yolov10n.pt")
 names = model.model.names
 
