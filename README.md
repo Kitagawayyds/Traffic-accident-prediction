@@ -20,13 +20,17 @@
 5. 尝试直接针对事故本身进行训练将结果与碰撞算法加权后得到最终结果
 6. 多帧判断（待定）
 
+尝试判断逻辑，通过事故模型判断事故发生帧以及涉及车辆，以该帧为范围判断上述风险分数，并与事故置信度加权与阈值比较进行计算。
+
+**完善阶段：**
+
 评估需要更多的维度使其更科学。
 
 - 仔细研究：https://blog.csdn.net/Kefenggewu_/article/details/123348800
 
-- 数据集：https://www.kaggle.com/datasets/javiersanchezsoriano/traffic-images-captured-from-uavs/data
-- 数据集：https://universe.roboflow.com/carlos-andres-wilches-perez/cct-drone
-- 数据集：
+- 数据集（车辆）：https://www.kaggle.com/datasets/javiersanchezsoriano/traffic-images-captured-from-uavs/data
+- 数据集（车辆）：https://universe.roboflow.com/carlos-andres-wilches-perez/cct-drone
+- 数据集（事故）：https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5
 
 
 
