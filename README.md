@@ -8,7 +8,9 @@
 
 判断碰撞事故的函数，当速度的变化超过一定阈值，并且角度发生了过大的变化，两者者生成一个针对事故发生率的评分，比如说角度0为0分（无风险），角度45为5（中风险），角度90为7（高风险），超过九十度以此类推，最高十分，三者（速度变化，重叠程度，角度）都有对应的这样的函数，之后对于三种函数赋予权值合成为总的交通事故风险函数，越高越容易发生交通事故，超过阈值就会在窗口打印发生交通事故的信息。
 
-概念阶段：![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/output.gif)
+**概念阶段：**
+
+![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/output.gif)
 
 需要解决的问题：
 1. 加速度没有归一化
