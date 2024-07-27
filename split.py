@@ -3,7 +3,7 @@ import glob
 import shutil
 import numpy as np
 
-dataset = 'sec3'
+dataset = 'secc'
 
 def get_filenames(folder):
     filenames = set()
@@ -14,7 +14,7 @@ def get_filenames(folder):
 
     return filenames
 
-section = get_filenames(f'C:\\Users\kitag\Desktop\dataset\{dataset}')
+section = get_filenames(f'C:\\Users\kitag\Desktop\dataset\\{dataset}')
 
 np_section = np.array(list(section))
 
@@ -28,22 +28,26 @@ test_size = total_images - train_size - val_size
 
 print(f'Total images: {total_images}, Train size: {train_size}, Val size: {val_size}, Test size: {test_size}')
 
-def split_dataset(label, image_names, train_size, val_size, test_size):
+def split_dataset(image_names, train_size, val_size, test_size):
+    base_dir = 'dataset2'
+
+    os.makedirs(base_dir, exist_ok=True)
+
     for i, image_name in enumerate(image_names):
         label_name = image_name.replace('.png', '.txt')
 
         if i < train_size:
             split = 'train'
         elif i < train_size + val_size:
-            split = 'val'
+            split = 'valid'
         else:
             split = 'test'
 
-        source_image_path = f'C:\\Users\kitag\Desktop\dataset\{label}\\{image_name}'
-        source_label_path = f'C:\\Users\kitag\Desktop\dataset\{label}\\{label_name}'
+        source_image_path = f'C:\\Users\kitag\Desktop\dataset\\{dataset}\\{image_name}'
+        source_label_path = f'C:\\Users\kitag\Desktop\dataset\\{dataset}\\{label_name}'
 
-        target_image_folder = f'dataset2/images/{split}'
-        target_label_folder = f'dataset2/labels/{split}'
+        target_image_folder = os.path.join(base_dir, split, 'images')
+        target_label_folder = os.path.join(base_dir, split, 'labels')
 
         os.makedirs(target_image_folder, exist_ok=True)
         os.makedirs(target_label_folder, exist_ok=True)
@@ -51,4 +55,4 @@ def split_dataset(label, image_names, train_size, val_size, test_size):
         shutil.copy(source_image_path, target_image_folder)
         shutil.copy(source_label_path, target_label_folder)
 
-split_dataset(dataset, np_section, train_size, val_size, test_size)
+split_dataset(np_section, train_size, val_size, test_size)
