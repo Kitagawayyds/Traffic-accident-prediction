@@ -12,7 +12,7 @@
 
 **概念阶段：**
 
-![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/output.gif)
+![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/concept.gif)
 
 需要解决的问题：
 1. 评分函数太粗糙了
