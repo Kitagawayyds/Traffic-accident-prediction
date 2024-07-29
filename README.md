@@ -20,12 +20,11 @@
 ![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/V1.gif)
 
 需要解决的问题：
-1. 评分函数太粗糙了
-2. 计算方式不够科学
-3. 代码应该包含更多信息方便调试
-4. 多帧判断（待定）
-5. 评估需要更多的维度使其更科学。
-6. 优化代码逻辑，提高推理速度
+1. 评分函数太粗糙了，计算方式不够科学
+2. 代码应该包含更多信息方便调试
+3. 多帧判断（待定）
+4. 评估需要更多的维度使其更科学。
+5. 优化代码逻辑，提高推理速度
 
 - 仔细研究：https://blog.csdn.net/Kefenggewu_/article/details/123348800
 
