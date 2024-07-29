@@ -117,7 +117,7 @@ def bb_overlap(bbox1, bbox2, overlap_threshold=0.3):
 def detect_accidents(track_history, boxes, accident_confidence):
     collision_detected = False
     tracked_cars = list(track_history.keys())
-    print(boxes)
+    # print(boxes)
 
     # 计算当前帧中存在的车辆之间的重叠区域
     if len(tracked_cars) >= 2:
@@ -153,13 +153,14 @@ def detect_accidents(track_history, boxes, accident_confidence):
                     max_overlap = max(max_overlap, bb_overlap(bbox1, bbox2))
 
         print(f"Track ID: {track_id}")
-        print(f"Accelerations: {accelerations}")
-        print(f"Angles: {angles}")
-        print(f"Average Overlap: {max_overlap}")
-        print(f"Accident Confidence: {accident_confidence}")
+        # print(f"Accelerations: {accelerations}")
+        # print(f"Angles: {angles}")
+        # print(f"Overlap: {max_overlap}")
+        # print(f"Accident Confidence: {accident_confidence}")
 
         # 计算风险评分
         risk_score = calculate_risk_score(accelerations, angles, max_overlap, accident_confidence)
+        print(f"Risk_score: {risk_score}")
         risk_scores[track_id].append(risk_score)
 
         if risk_score > 5:  # 超过阈值
