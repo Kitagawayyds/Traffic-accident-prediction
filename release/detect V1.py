@@ -10,7 +10,7 @@ vehicle_model = YOLO("yolov10n.pt")
 accident_model = YOLO("best.pt")  # 加载事故识别模型
 
 # 打开视频文件
-video_path = "simple.mp4"
+video_path = "accident.mp4"
 cap = cv2.VideoCapture(video_path)
 
 # 获取视频帧的宽度和高度
@@ -156,6 +156,7 @@ def detect_accidents(track_history, boxes, accident_confidence):
                     bbox2 = boxes[other_id]
                     max_overlap = max(max_overlap, bb_overlap(bbox1, bbox2))
 
+        print(f"ID: {track_id}")
         print(f"Accelerations: {accelerations}")
         print(f"Angles: {angles}")
         print(f"Overlap: {max_overlap}")
