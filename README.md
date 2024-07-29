@@ -26,8 +26,6 @@
 4. 评估需要更多的维度使其更科学。
 5. 优化代码逻辑，提高推理速度
 
-- 仔细研究：https://blog.csdn.net/Kefenggewu_/article/details/123348800
-
 - 数据集（车辆）：https://www.kaggle.com/datasets/javiersanchezsoriano/traffic-images-captured-from-uavs/data 注意引用
 - 数据集（事故）：https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5 注意引用
 
