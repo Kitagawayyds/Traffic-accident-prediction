@@ -10,7 +10,7 @@ vehicle_model = YOLO("yolov10n.pt")
 accident_model = YOLO("best.pt")  # 加载事故识别模型
 
 # 打开视频文件
-video_path = "accident.mp4"
+video_path = "simple.mp4"
 cap = cv2.VideoCapture(video_path)
 
 # 获取视频帧的宽度和高度
@@ -28,6 +28,7 @@ track_history = defaultdict(lambda: [])
 risk_scores = defaultdict(lambda: [])
 accident_confidences = []  # 用于存储每一帧的事故置信度
 
+
 # 计算加速度和角度变化的函数
 def calculate_acceleration(track):
     accelerations = []
@@ -42,6 +43,7 @@ def calculate_acceleration(track):
             accelerations.append(acceleration)
     return accelerations
 
+
 def calculate_angle_change(track):
     angles = []
     if len(track) > 2:
@@ -54,6 +56,7 @@ def calculate_angle_change(track):
             angle_change = abs(degrees(angle2 - angle1))
             angles.append(angle_change)
     return angles
+
 
 # 计算风险评分的函数
 def calculate_risk_score(acceleration_changes, angle_changes, overlap, accident_confidence):
@@ -104,6 +107,7 @@ def calculate_risk_score(acceleration_changes, angle_changes, overlap, accident_
 
     return weighted_risk_score
 
+
 # 计算边界框重叠的函数
 def bb_overlap(bbox1, bbox2, overlap_threshold=0.3):
     poly1 = Polygon([(bbox1[0], bbox1[1]), (bbox1[0], bbox1[3]), (bbox1[2], bbox1[3]), (bbox1[2], bbox1[1])])
@@ -113,12 +117,12 @@ def bb_overlap(bbox1, bbox2, overlap_threshold=0.3):
     overlap_ratio = intersection_area / union_area
     return overlap_ratio
 
+
 # 事故检测函数
 def detect_accidents(track_history, boxes, accident_confidence):
     collision_detected = False
     tracked_cars = list(track_history.keys())
-    # print(boxes)
-
+    print(boxes)
     # 计算当前帧中存在的车辆之间的重叠区域
     if len(tracked_cars) >= 2:
         overlaps = {}
@@ -152,11 +156,10 @@ def detect_accidents(track_history, boxes, accident_confidence):
                     bbox2 = boxes[other_id]
                     max_overlap = max(max_overlap, bb_overlap(bbox1, bbox2))
 
-        print(f"Track ID: {track_id}")
-        # print(f"Accelerations: {accelerations}")
-        # print(f"Angles: {angles}")
-        # print(f"Overlap: {max_overlap}")
-        # print(f"Accident Confidence: {accident_confidence}")
+        print(f"Accelerations: {accelerations}")
+        print(f"Angles: {angles}")
+        print(f"Overlap: {max_overlap}")
+        print(f"Accident Confidence: {accident_confidence}")
 
         # 计算风险评分
         risk_score = calculate_risk_score(accelerations, angles, max_overlap, accident_confidence)
@@ -178,7 +181,8 @@ while cap.isOpened():
         vehicle_results = vehicle_model.track(frame, persist=True, tracker='bytetrack.yaml')
         boxes = {}
         if vehicle_results[0].boxes.id is not None:
-            boxes = {int(id): box.tolist() for id, box in zip(vehicle_results[0].boxes.id.cpu(), vehicle_results[0].boxes.xyxy.cpu())}
+            boxes = {int(id): box.tolist() for id, box in
+                     zip(vehicle_results[0].boxes.id.cpu(), vehicle_results[0].boxes.xyxy.cpu())}
             track_ids = vehicle_results[0].boxes.id.int().cpu().tolist()
             annotated_frame = vehicle_results[0].plot()
 
@@ -201,7 +205,10 @@ while cap.isOpened():
             boxes_acc = result.boxes
             for box in boxes_acc:
                 confidence = box.conf[0]  # 置信度
+                x1, y1, x2, y2 = box.xyxy[0].tolist()  # 获取边界框的坐标
                 max_confidence = max(max_confidence, confidence.item())
+                # 绘制事故模型的边界框
+                cv2.rectangle(annotated_frame, (int(x1), int(y1)), (int(x2), int(y2)), (0, 255, 0), 2)
 
         accident_confidences.append(max_confidence)  # 保存每帧的事故置信度
         accident_confidence_str = f"{max_confidence:.4f}"
