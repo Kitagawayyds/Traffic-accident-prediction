@@ -161,8 +161,8 @@ while cap.isOpened():
 
             collision, id1, id2 = check_for_collision(track_history, boxes)
             if collision:
-                print(f"Collision detected between ID: {id1} and ID: {id2}")
-                cv2.putText(annotated_frame, f"Collision between ID: {id1} and ID: {id2}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+                print(f"Accident detected between ID: {id1} and ID: {id2}")
+                cv2.putText(annotated_frame, f"Accident between ID: {id1} and ID: {id2}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
             # 写入视频帧
             out.write(annotated_frame)
@@ -182,6 +182,6 @@ with open("track_history.txt", "w") as f:
     for track_id, track in track_history.items():
         accelerations = calculate_acceleration(track)
         angles = calculate_angle_change(track)
-        overlap = 0  # Initialize overlap to 0, as it's only relevant during collisions
+        overlap = 0
         risk_score_series = [calculate_risk_score(accelerations[:i+1], angles[:i+1], overlap) for i in range(len(accelerations))]
         f.write(f"ID: {track_id}, Track: {track}, Accelerations: {accelerations}, Angles: {angles}, Risk Scores: {risk_score_series}\n")
