@@ -37,12 +37,12 @@
 ![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/V2.gif)
 
 需要解决的问题：
-1. 评分函数太粗糙了，计算方式不够科学
-2. 代码应该包含更多信息方便调试
-3. 多帧判断（待定）
-4. 评估需要更多的维度使其更科学。
-5. 优化代码逻辑，提高推理速度
-6. 尝试使用更加轻量的模型
+1. 多帧判断（待定）
+2. 评估需要更多的维度使其更科学。
+3. 优化代码逻辑，提高推理速度
+4. 尝试使用更加轻量的模型
+5. 事故置信度没有关联到车辆而是画面本身（改进可能会极大增加）
+6. 参数需要进行调整
 
 - 数据集（车辆）：https://www.kaggle.com/datasets/javiersanchezsoriano/traffic-images-captured-from-uavs/data 注意引用
 - 数据集（事故）：https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5 注意引用
