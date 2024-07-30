@@ -43,6 +43,7 @@
 4. 尝试使用更加轻量的模型
 5. 事故置信度没有关联到车辆而是画面本身（改进可能会极大增加）
 6. 参数需要进行调整
+7. 继续分析误识别情况的原因
 
 - 数据集（车辆）：https://www.kaggle.com/datasets/javiersanchezsoriano/traffic-images-captured-from-uavs/data 注意引用
 - 数据集（事故）：https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5 注意引用
