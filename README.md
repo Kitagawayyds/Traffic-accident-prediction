@@ -19,6 +19,9 @@
 
 ![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/V1.gif)
 
+## version 2
+在这个阶段着重于对于评分函数的优化，判断逻辑优化，以及信息调试的增加，与此同时增加视频上的信息。
+
 需要解决的问题：
 1. 评分函数太粗糙了，计算方式不够科学
 2. 代码应该包含更多信息方便调试
