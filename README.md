@@ -36,6 +36,11 @@
 
 ![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/V2.gif)
 
+## version 3
+在这个阶段主要优化代码，调整代码结构以及完善代码，与此同时添加了FPS的显示以判断模型的推理速度。同时对代码控制台的输出进行了控制，以便更好地进行调试。
+
+
+
 需要解决的问题：
 1. 多帧判断（待定）
 2. 评估需要更多的维度使其更科学。
