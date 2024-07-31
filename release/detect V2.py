@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 from ultralytics import YOLO
 from shapely.geometry import Polygon
-from math import atan2, degrees, sqrt
+from math import atan2, degrees
 
 # 加载YOLO模型
 vehicle_model = YOLO("yolov10n.pt")
