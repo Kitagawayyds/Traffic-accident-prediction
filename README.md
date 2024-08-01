@@ -61,6 +61,105 @@
 
 **其中，第五条和第三条为当前最需要解决的问题。**
 
+目前的逻辑：
+```plantuml
+@startuml
+
+!define RECTANGLE class
+!define DIAMOND diamond
+
+RECTANGLE "Start" {
+}
+
+RECTANGLE "Load YOLO Models" {
+    :Load vehicle_model;
+    :Load accident_model;
+}
+
+RECTANGLE "Open Video File (accident.mp4)" {
+    :Initialize Video Capture;
+    :Get Video Properties (Width, Height, FPS);
+}
+
+RECTANGLE "Initialize Output Video" {
+    :Create Video Writer Object;
+}
+
+RECTANGLE "Define Perspective Transformer" {
+    :Initialize ViewTransformer;
+}
+
+RECTANGLE "Processing Loop (for each frame)" {
+    DIAMOND "Read Frame" {
+    }
+
+    RECTANGLE "Vehicle Detection" {
+        :Use vehicle_model to detect vehicles;
+        :Extract bounding boxes, IDs;
+        :Annotate frame with results;
+        :Update track_history;
+    }
+
+    RECTANGLE "Accident Detection" {
+        :Use accident_model to detect accidents;
+        :Extract bounding boxes, confidences;
+        :Annotate frame with results;
+        :Update accident_confidences;
+    }
+
+    RECTANGLE "Calculate Risk Scores" {
+        :Calculate Acceleration;
+        :Calculate Angle Changes;
+        :Calculate Overlap;
+        :Calculate Risk Score;
+    }
+
+    RECTANGLE "Detect Collisions" {
+        :Check if risk score exceeds threshold;
+        :Annotate frame with collision detection;
+    }
+
+    RECTANGLE "Display Frame" {
+        :Annotate with FPS and results;
+        :Write to output video;
+        :Show in window;
+        :Check for exit command;
+    }
+}
+
+RECTANGLE "End of Video" {
+}
+
+RECTANGLE "Release Resources" {
+    :Release Video Capture;
+    :Release Video Writer;
+    :Destroy OpenCV windows;
+}
+
+RECTANGLE "End" {
+}
+
+' Define the flow
+Start --> "Load YOLO Models"
+"Load YOLO Models" --> "Open Video File (accident.mp4)"
+"Open Video File (accident.mp4)" --> "Initialize Output Video"
+"Initialize Output Video" --> "Define Perspective Transformer"
+"Define Perspective Transformer" --> "Processing Loop (for each frame)"
+"Processing Loop (for each frame)" --> "Read Frame"
+
+"Read Frame" --> "Vehicle Detection"
+"Vehicle Detection" --> "Accident Detection"
+"Accident Detection" --> "Calculate Risk Scores"
+"Calculate Risk Scores" --> "Detect Collisions"
+"Detect Collisions" --> "Display Frame"
+
+"Display Frame" --> "End of Video"
+"End of Video" --> "Release Resources"
+"Release Resources" --> End
+
+@enduml
+
+```
 - 数据集（车辆）：https://www.kaggle.com/datasets/javiersanchezsoriano/traffic-images-captured-from-uavs/data 注意引用
 - 数据集（事故）：https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5 注意引用
 - 文章：https://blog.csdn.net/hahabeibei123456789/article/details/103287541 可以了解
