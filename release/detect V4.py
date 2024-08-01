@@ -34,6 +34,8 @@ show = False  # 打印详细日志
 frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 fps = int(cap.get(cv2.CAP_PROP_FPS))
+# print(frame_width)
+# print(frame_height)
 
 # 创建视频写入对象
 output_path = "output.mp4"
