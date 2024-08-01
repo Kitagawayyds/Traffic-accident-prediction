@@ -62,103 +62,54 @@
 **其中，第五条和第三条为当前最需要解决的问题。**
 
 目前的逻辑：
-```plantuml
-@startuml
+```mermaid
+graph TD
+    A[加载YOLO模型]
+    B[打开视频文件]
+    C[获取视频帧的尺寸和FPS]
+    D[创建视频写入对象]
+    E[初始化视角转换器]
+    F[定义计算函数]
+    
+    subgraph 视频处理
+        G[视频帧处理循环]
+        G --> H{读取视频帧成功？}
+        H -- No --> I[退出循环]
+        H -- Yes --> J[车辆检测]
+        J --> K{检测到车辆？}
+        K -- No --> L[跳到事故检测]
+        K -- Yes --> M[跟踪车辆]
+        M --> N[绘制车辆轨迹]
 
-!define RECTANGLE class
-!define DIAMOND diamond
+        N --> O[事故检测]
+        O --> P[计算风险评分]
+        P --> Q{检测到事故？}
+        Q -- No --> R[计算并显示FPS]
+        Q -- Yes --> S[显示碰撞检测警报]
 
-RECTANGLE "Start" {
-}
+        R --> T[将帧写入输出视频文件]
+        S --> T
+        T --> U[显示带注释的帧]
+        U --> G
+    end
 
-RECTANGLE "Load YOLO Models" {
-    :Load vehicle_model;
-    :Load accident_model;
-}
+    I --> V[释放视频资源]
+    V --> W[关闭所有窗口]
 
-RECTANGLE "Open Video File (accident.mp4)" {
-    :Initialize Video Capture;
-    :Get Video Properties (Width, Height, FPS);
-}
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
 
-RECTANGLE "Initialize Output Video" {
-    :Create Video Writer Object;
-}
-
-RECTANGLE "Define Perspective Transformer" {
-    :Initialize ViewTransformer;
-}
-
-RECTANGLE "Processing Loop (for each frame)" {
-    DIAMOND "Read Frame" {
-    }
-
-    RECTANGLE "Vehicle Detection" {
-        :Use vehicle_model to detect vehicles;
-        :Extract bounding boxes, IDs;
-        :Annotate frame with results;
-        :Update track_history;
-    }
-
-    RECTANGLE "Accident Detection" {
-        :Use accident_model to detect accidents;
-        :Extract bounding boxes, confidences;
-        :Annotate frame with results;
-        :Update accident_confidences;
-    }
-
-    RECTANGLE "Calculate Risk Scores" {
-        :Calculate Acceleration;
-        :Calculate Angle Changes;
-        :Calculate Overlap;
-        :Calculate Risk Score;
-    }
-
-    RECTANGLE "Detect Collisions" {
-        :Check if risk score exceeds threshold;
-        :Annotate frame with collision detection;
-    }
-
-    RECTANGLE "Display Frame" {
-        :Annotate with FPS and results;
-        :Write to output video;
-        :Show in window;
-        :Check for exit command;
-    }
-}
-
-RECTANGLE "End of Video" {
-}
-
-RECTANGLE "Release Resources" {
-    :Release Video Capture;
-    :Release Video Writer;
-    :Destroy OpenCV windows;
-}
-
-RECTANGLE "End" {
-}
-
-' Define the flow
-Start --> "Load YOLO Models"
-"Load YOLO Models" --> "Open Video File (accident.mp4)"
-"Open Video File (accident.mp4)" --> "Initialize Output Video"
-"Initialize Output Video" --> "Define Perspective Transformer"
-"Define Perspective Transformer" --> "Processing Loop (for each frame)"
-"Processing Loop (for each frame)" --> "Read Frame"
-
-"Read Frame" --> "Vehicle Detection"
-"Vehicle Detection" --> "Accident Detection"
-"Accident Detection" --> "Calculate Risk Scores"
-"Calculate Risk Scores" --> "Detect Collisions"
-"Detect Collisions" --> "Display Frame"
-
-"Display Frame" --> "End of Video"
-"End of Video" --> "Release Resources"
-"Release Resources" --> End
-
-@enduml
-
+    subgraph 事故检测
+        O --> P1[获取检测到的车辆和边界框]
+        P1 --> P2[计算车辆之间的重叠度]
+        P2 --> P3[计算每辆车的加速度和角度变化]
+        P3 --> P4[获取事故检测置信度]
+        P4 --> P5[计算每辆车的风险评分]
+    end
 ```
 - 数据集（车辆）：https://www.kaggle.com/datasets/javiersanchezsoriano/traffic-images-captured-from-uavs/data 注意引用
 - 数据集（事故）：https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5 注意引用
