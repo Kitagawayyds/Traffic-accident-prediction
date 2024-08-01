@@ -241,7 +241,7 @@ while cap.isOpened():
     if vehicle_results:
         inference_time = vehicle_results[0].speed['inference'] / 1000  # 转换为秒
         fps_display = 1 / inference_time
-        cv2.putText(annotated_frame, f'FPS: {fps_display:.2f}', (frame_width - 110, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.6,
+        cv2.putText(annotated_frame, f'FPS: {fps_display:.2f}', (frame_width - 120, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.6,
                     (0, 255, 255), 2)
 
     # 将帧写入输出视频文件
