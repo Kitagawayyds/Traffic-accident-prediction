@@ -48,6 +48,8 @@
 
 ![diaplay](https://s2.loli.net/2024/08/01/zyNSBcAmE5PDWCo.png)
 
+![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/V4.gif)
+
 需要解决的问题：
 1. 多帧判断（待定）
 2. 评估需要更多的维度使其更科学。
