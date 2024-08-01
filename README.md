@@ -41,6 +41,13 @@
 
 ![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/V3.gif)
 
+## Version 4
+在这个阶段，针对评分计算再次进行了优化，将部分计算矢量化，同时对于细节进行了调整。
+
+于此同时，在速度和角度计算时使用了坐标转换，现在可以将视频中车辆的像素坐标映射为真实坐标（但同样的，这也使得我们在配置代码时需要根据视频实际情况设置映射参数）：
+
+![diaplay](https://s2.loli.net/2024/08/01/zyNSBcAmE5PDWCo.png)
+
 需要解决的问题：
 1. 多帧判断（待定）
 2. 评估需要更多的维度使其更科学。
@@ -49,7 +56,6 @@
 5. 事故置信度没有关联到车辆而是画面本身，改进逻辑，当检测到事故时才计算速度，角度和重叠率
 6. 参数需要进行调整
 7. 继续分析误识别情况的原因
-8. 进行坐标转换
 
 - 数据集（车辆）：https://www.kaggle.com/datasets/javiersanchezsoriano/traffic-images-captured-from-uavs/data 注意引用
 - 数据集（事故）：https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5 注意引用
