@@ -84,17 +84,17 @@ graph TD
         N --> O[事故检测]
         O --> P[计算风险评分]
         P --> Q{检测到事故？}
-        Q -- No --> R[计算并显示FPS]
+        Q -- No --> T[计算和显示FPS]
         Q -- Yes --> S[显示碰撞检测警报]
 
-        R --> T[将帧写入输出视频文件]
         S --> T
-        T --> U[显示带注释的帧]
-        U --> G
+        T --> U[将帧写入输出视频文件]
+        U --> V[显示带注释的帧]
+        V --> G
     end
 
-    I --> V[释放视频资源]
-    V --> W[关闭所有窗口]
+    I --> W[释放视频资源]
+    W --> X[关闭所有窗口]
 
     A --> B
     B --> C
@@ -109,7 +109,10 @@ graph TD
         P2 --> P3[计算每辆车的加速度和角度变化]
         P3 --> P4[获取事故检测置信度]
         P4 --> P5[计算每辆车的风险评分]
+        P5 --> P[计算风险评分]
+        
     end
+
 ```
 - 数据集（车辆）：https://www.kaggle.com/datasets/javiersanchezsoriano/traffic-images-captured-from-uavs/data 注意引用
 - 数据集（事故）：https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5 注意引用
