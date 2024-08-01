@@ -59,6 +59,8 @@
 6. 参数需要进行调整
 7. 继续分析误识别情况的原因
 
+**其中，第五条和第三条为当前最需要解决的问题。**
+
 - 数据集（车辆）：https://www.kaggle.com/datasets/javiersanchezsoriano/traffic-images-captured-from-uavs/data 注意引用
 - 数据集（事故）：https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5 注意引用
 - 文章：https://blog.csdn.net/hahabeibei123456789/article/details/103287541 可以了解
