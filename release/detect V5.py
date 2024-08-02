@@ -232,29 +232,44 @@ while cap.isOpened():
 
     # 事故检测
     accident_results = accident_model(frame, verbose=False)
-    max_confidence = 0
     accident_boxes = []
+    detected_objects = False
+    acc_detected = False
+    involved_vehicles = set()
 
     for result in accident_results:
         boxes_acc = result.boxes
         for box in boxes_acc:
             confidence = box.conf[0]
             x1, y1, x2, y2 = box.xyxy[0].tolist()
-            max_confidence = max(max_confidence, confidence.item())
             cv2.rectangle(annotated_frame, (int(x1), int(y1)), (int(x2), int(y2)), (0, 255, 0), 2)
             confidence_text = f"{confidence.item():.2f}"
             cv2.putText(annotated_frame, confidence_text, (int(x1), int(y1) - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9,
                         (0, 255, 0), 2)
-            accident_boxes.append((int(x1), int(y1), int(x2), int(y2)))
+            accident_boxes.append((int(x1), int(y1), int(x2), int(y2), confidence.item()))
+            detected_objects = True
 
-    accident_confidences.append(max_confidence)
-    acc_detected = detect_accidents(track_history, boxes, max_confidence)
+    if detected_objects:
+        for acc_box in accident_boxes:
+            acc_x1, acc_y1, acc_x2, acc_y2, acc_confidence = acc_box
+            involved_vehicles = []
 
-    # 显示碰撞检测警报
-    if acc_detected:
-        for (x1, y1, x2, y2) in accident_boxes:
-            cv2.rectangle(annotated_frame, (x1, y1), (x2, y2), (0, 0, 255), 2)
-        cv2.putText(annotated_frame, "Accident Detected!", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+            for track_id, box in boxes.items():
+                x1, y1, x2, y2 = box
+                if (x1 < acc_x2 and x2 > acc_x1 and y1 < acc_y2 and y2 > acc_y1):
+                    involved_vehicles.append(track_id)
+                    # print(f"Vehicle ID: {track_id}, Accident Box Confidence: {acc_confidence:.2f}")
+
+            if involved_vehicles:
+                acc_detected = detect_accidents(track_history, {id: boxes[id] for id in involved_vehicles},
+                                                acc_confidence)
+                if acc_detected:
+                    for track_id in involved_vehicles:
+                        x1, y1, x2, y2 = boxes[track_id]
+                        cv2.rectangle(annotated_frame, (int(x1), int(y1)), (int(x2), int(y2)), (0, 0, 255), 2)
+                        cv2.putText(annotated_frame, "Accident Detected!", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1,
+                                    (0, 0, 255), 2)
+    # print("----------------------------")
 
     # 计算和显示FPS
     if vehicle_results:
