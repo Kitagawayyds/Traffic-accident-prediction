@@ -212,6 +212,8 @@ while cap.isOpened():
     if not success:
         break
 
+    annotated_frame = frame.copy()
+
     # 车辆检测
     vehicle_results = vehicle_model.track(frame, persist=True, tracker='botsort.yaml', verbose=False)
     boxes = {}
