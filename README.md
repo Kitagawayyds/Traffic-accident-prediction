@@ -116,6 +116,9 @@ graph TD
 
 ![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/V5.gif)
 
+## Version 6
+在这个版本首先修复了视频分辨率过高导致的问题（尽管我也不认为有人会闲的给摄像头用4K），
+
 需要解决的问题：
 - 评估可能需要更多的维度使其更科学（增加环境常数）
 - **优化代码逻辑，提高推理速度，减少不必要的计算**
