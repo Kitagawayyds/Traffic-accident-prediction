@@ -77,20 +77,17 @@
 
 ![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/transform.gif)
 
+![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/V6.gif)
+
 需要解决的问题：
 - **优化代码逻辑，提高推理速度，减少不必要的计算**
 - 尝试使用更加轻量的模型
 - 参数需要进行调整（针对评分阈值）
 - 继续分析误识别情况的原因
 - 针对不同天气情况，时间，以及摄像头低像素情况进行鲁棒性数据增强修改
-- 视频分辨率过高会导致出现问题
-- 碰撞算法改进（碰撞框角度问题，改回矩形框，增加车辆种类）
-- 预测框闪烁问题
+- 碰撞算法改进（增加车辆种类，丰富ab参数）
 - 增加调试信息，工整化（表格）
 - 编写获取道路映射坐标的代码
-- 按照指定帧数识别
-- 映射可视化（暂时放弃）
-- 增加调试信息
 - 可移植性以及封装
 - 结果处输出时间等信息。
 - 模块分管化
