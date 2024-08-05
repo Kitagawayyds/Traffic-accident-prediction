@@ -73,7 +73,7 @@
 
 ![display](https://s2.loli.net/2024/08/05/U5YVjlgL9HWMoix.png)
 
-编写了映射可视化代码用于分析碰撞情况（此处映射为测试时使用的结果，非准确映射）：
+编写了映射可视化代码用于分析碰撞情况（此处映射为测试时使用的结果，非准确映射，因为摄像头是动态的导致坐标映射和轨迹不准确）：
 
 ![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/transform.gif)
 
