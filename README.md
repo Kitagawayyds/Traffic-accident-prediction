@@ -13,14 +13,14 @@
 
 判断交通事故的函数，当速度的变化超过一定阈值，并且角度发生了过大的变化，两者者生成一个针对事故发生率的评分，比如说角度0为0分（无风险），角度45为5（中风险），角度90为7（高风险），超过九十度以此类推，最高十分，三者（速度变化，重叠程度，角度）都有对应的这样的函数，之后对于三种函数赋予权值合成为总的交通事故风险函数，越高越容易发生交通事故，超过阈值就会在窗口打印发生交通事故的信息。
 
-![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/concept.gif)
+![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/concept.gif)
 
 ## Version 1
 在这个阶段，我引入了新的一个模型用于直接检测事故，并拿得到的置信度与概念版本得到的评分相乘，从而尝试实现更好的结果（使用深度模型直接识别可以捕捉到一些无法量化的细节），代价一是代码更复杂了，二是推理速度更慢了。
 
 绿框是事故模型认为可能发生交通事故的区域，而左上角的红字是最终算法认为事故发生时的提示。
 
-![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/V1.gif)
+![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/V1.gif)
 
 ## Version 2
 在这个阶段着重于对于评分函数的优化，判断逻辑优化，以及信息调试的增加，与此同时增加视频上的信息。
@@ -37,12 +37,12 @@
 
 在视频中添加了绿框（事故识别）的置信度以及红框（代表了算法最终认为事故发生的位置）
 
-![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/V2.gif)
+![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/V2.gif)
 
 ## Version 3
 在这个阶段主要优化代码，调整代码结构以及完善代码，与此同时添加了FPS的显示以判断模型的推理速度。同时对代码控制台的输出进行了控制，以便更好地进行调试。
 
-![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/V3.gif)
+![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/V3.gif)
 
 ## Version 4
 在这个阶段，针对评分计算再次进行了优化，将部分计算矢量化，同时对于细节进行了调整。
@@ -51,7 +51,7 @@
 
 ![diaplay](https://s2.loli.net/2024/08/01/zyNSBcAmE5PDWCo.png)
 
-![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/V4.gif)
+![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/V4.gif)
 
 ## Version 5
 使用了更加灵活的存储结构deque来限制数据长度用于长时间检测，同时在评分函数部分进一步优化，减少循环的同时保证算法的正确性，减少了计算量。
@@ -64,7 +64,7 @@
 
 于此同时对于视频处理将之前遗漏的问题进行了修复，现在不再会丢失没有检测到实体的视频帧了。
 
-![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/V5.gif)
+![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/V5.gif)
 
 ## Version 6
 在这个版本首先修复了视频分辨率过高导致的问题（尽管我也不认为有人会闲的给摄像头用4K），同时现在可以自定义识别速度（帧数），输出的视频的长度也将与输入视频同步，同时优化了标记事故的方式，更加直观。
