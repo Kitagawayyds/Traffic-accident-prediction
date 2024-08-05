@@ -75,7 +75,7 @@
 
 编写了映射可视化代码用于分析碰撞情况（此处映射为测试时使用的结果，非准确映射）：
 
-![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/visualize.gif)
+![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/transform.gif)
 
 需要解决的问题：
 - **优化代码逻辑，提高推理速度，减少不必要的计算**
