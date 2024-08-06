@@ -96,12 +96,10 @@ ARMS系统，全称是 "Accident Risk Monitoring System"（事故风险监控系
 - 针对不同天气情况，时间，以及摄像头低像素情况进行鲁棒性数据增强修改
 - 碰撞算法改进（增加车辆种类，丰富ab参数）
 - 编写获取道路映射坐标的代码
-- 可移植性以及封装
+- 可移植性以及封装（参数化调整）
 - 模块分管化
 - 道路边界环境碰撞逻辑
 - 报错信息处理
-
-**其中，加粗条目为当前最需要解决的问题。**
 
 - 训练数据集（车辆）：https://www.kaggle.com/datasets/javiersanchezsoriano/traffic-images-captured-from-uavs/data 注意引用
 - 训练数据集（事故）：https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5 注意引用
