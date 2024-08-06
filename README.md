@@ -77,8 +77,6 @@ ARMS系统，全称是 "Accident Risk Monitoring System"（事故风险监控系
 
 编写了映射可视化代码用于分析碰撞情况（此处映射为测试时使用的结果，非准确映射，因为摄像头是动态的导致坐标映射和轨迹不准确）：
 
-![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/transform.gif)
-
 ![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/V6.gif)
 
 ## Version 7
