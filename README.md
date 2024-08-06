@@ -75,17 +75,18 @@ ARMS系统，全称是 "Accident Risk Monitoring System"（事故风险监控系
 
 ![display](https://s2.loli.net/2024/08/05/U5YVjlgL9HWMoix.png)
 
-编写了映射可视化代码用于分析碰撞情况（此处映射为测试时使用的结果，非准确映射，因为摄像头是动态的导致坐标映射和轨迹不准确）：
+编写了映射可视化代码用于分析碰撞情况
 
 ![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/V6.gif)
 
 ## Version 7
-首先更新了fps的更新逻辑，现在fps代表了整个程序处理视频帧的平均速度。
+首先删除了fps相关的代码，使用tqdm库的进度条来获取程序运行进度以及速度。
 
 统合和修正了之前可视化转换视图的功能(转换情况可以参考`GIF`文件夹下的compare1和compare2)
 
-![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/com1.gif)
+增添并规范化了控制台的输出，可以更好更直观地判断程序的运行情况
 
+可自定义是否保存推理视频以及显示车辆轨迹。
 
 需要解决的问题：
 - **优化代码逻辑，提高推理速度，减少不必要的计算**
@@ -94,14 +95,10 @@ ARMS系统，全称是 "Accident Risk Monitoring System"（事故风险监控系
 - 继续分析误识别情况的原因
 - 针对不同天气情况，时间，以及摄像头低像素情况进行鲁棒性数据增强修改
 - 碰撞算法改进（增加车辆种类，丰富ab参数）
-- 增加调试信息，工整化（表格）
 - 编写获取道路映射坐标的代码
 - 可移植性以及封装
-- 结果处输出时间等信息。
 - 模块分管化
-- 更改fps计算方式
 - 道路边界环境碰撞逻辑
-- 预测结果保存可选
 
 **其中，加粗条目为当前最需要解决的问题。**
 
