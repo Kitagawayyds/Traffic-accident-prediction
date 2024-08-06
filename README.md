@@ -110,6 +110,7 @@ ARMS系统，全称是 "Accident Risk Monitoring System"（事故风险监控系
 - 高质量视频数据（高速）：https://www.vecteezy.com/video/1804377-motorway-with-cars-passing-by
 - 文章：https://blog.csdn.net/hahabeibei123456789/article/details/103287541 可以了解
 - 文章：https://ar5iv.labs.arxiv.org/html/2308.15985
+- 文章：https://developer.aliyun.com/article/606837
 
 
 
