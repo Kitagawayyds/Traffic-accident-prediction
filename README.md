@@ -81,6 +81,11 @@ ARMS系统，全称是 "Accident Risk Monitoring System"（事故风险监控系
 
 ![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/V6.gif)
 
+## Version 7
+首先更新了fps的更新逻辑，现在fps代表了整个程序处理视频帧的平均速度。
+
+统合和修正了之前可视化转换视图的功能
+
 需要解决的问题：
 - **优化代码逻辑，提高推理速度，减少不必要的计算**
 - 尝试使用更加轻量的模型
