@@ -88,7 +88,6 @@ ARMS系统，全称是 "Accident Risk Monitoring System"（事故风险监控系
 
 ![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/com1.gif)
 
-![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/com2.gif)
 
 需要解决的问题：
 - **优化代码逻辑，提高推理速度，减少不必要的计算**
