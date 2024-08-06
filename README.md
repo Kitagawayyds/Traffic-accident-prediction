@@ -104,6 +104,7 @@ ARMS系统，全称是 "Accident Risk Monitoring System"（事故风险监控系
 - **模块分管化**
 - 道路边界环境碰撞逻辑
 - **报错信息处理**
+- 添加针对于速度的考量
 
 - 训练数据集（车辆）：https://www.kaggle.com/datasets/javiersanchezsoriano/traffic-images-captured-from-uavs/data 注意引用
 - 训练数据集（事故）：https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5 注意引用
