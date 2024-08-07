@@ -100,7 +100,7 @@ def show_frame_with_coordinates(video_path):
     # 输出最终的四个点的坐标
     print("最终的四个点坐标:")
     for i, point in enumerate(points):
-        print(f"点 {i}: {point}")
+        print(f"点 {i+1}: {point}")
 
     # 释放视频文件
     cap.release()
