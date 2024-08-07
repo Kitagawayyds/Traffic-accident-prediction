@@ -128,7 +128,7 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 ![display](https://s2.loli.net/2024/08/07/XeugfdjWkra6AHo.png)
 
 
-速度和车要等比放大，添加放大系数
+速度和车要等比放大，添加放大系数，事故车辆信息打印，映射框边框延伸
 
 
 
