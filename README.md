@@ -94,8 +94,6 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 
 同时编写了映射坐标获取的工具，便于快速处理。
 
-![display](https://s2.loli.net/2024/08/07/lzgIa4rXNbxtw2n.png)
-
 映射的具体逻辑为：
 
 **车道宽度：**
@@ -117,9 +115,18 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 
 映射后的效果：
 
+### 正常情况
+
+![display](https://s2.loli.net/2024/08/07/lzgIa4rXNbxtw2n.png)
+
 ![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/test2.gif)
 
 ![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/test2-t.gif)
+
+### 交通事故
+
+![display](https://s2.loli.net/2024/08/07/XeugfdjWkra6AHo.png)
+
 
 需要解决的问题：
 - **优化代码逻辑，提高推理速度，减少不必要的计算**
