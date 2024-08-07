@@ -129,6 +129,10 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 
 ![display](https://s2.loli.net/2024/08/07/XeugfdjWkra6AHo.png)
 
+![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/accident2.gif)
+
+![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/accident2-t.gif)
+
 这一版本弥补了大量之前版本所遗漏的问题，在接下来的版本，最重要的就是改善角度，速度，重合度的计算，使其更准确，更抗干扰（取多值平均），并且添加针对速度的考量作为新的评估维度（同前面三个），映射至风险评分时也需要更可以解释的科学逻辑。
 
 需要解决的问题：
