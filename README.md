@@ -128,6 +128,11 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 ![display](https://s2.loli.net/2024/08/07/XeugfdjWkra6AHo.png)
 
 
+速度和车要等比放大，添加放大系数
+
+
+
+
 需要解决的问题：
 - **优化代码逻辑，提高推理速度，减少不必要的计算**
 - 尝试使用更加轻量的模型
