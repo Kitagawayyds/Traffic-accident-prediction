@@ -90,7 +90,7 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 
 可自定义是否保存推理视频以及显示车辆轨迹。
 ## Version 8
-在这个版本首先再次优化了显示逻辑，现在更加地清晰，并且更多地参数用于进行细微调整。
+在这个版本首先再次优化了显示逻辑，现在更加地清晰，并且更多地参数用于进行细微调整，再次规范了速度的计算方式，以KM/H为单位显示，修正了角度的计算方式，确保轨迹的正确性
 
 同时编写了映射坐标获取的工具，便于快速处理。
 
@@ -127,12 +127,6 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 
 ![display](https://s2.loli.net/2024/08/07/XeugfdjWkra6AHo.png)
 
-
-速度和车要等比放大，添加放大系数，事故车辆信息打印，映射框边框延伸
-
-
-
-
 需要解决的问题：
 - **优化代码逻辑，提高推理速度，减少不必要的计算**
 - 尝试使用更加轻量的模型
@@ -147,6 +141,7 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 - **报错信息处理**
 - 添加针对于速度的考量
 - 增加测试
+- **轨迹平滑**
 
 - 训练数据集（车辆）：https://www.kaggle.com/datasets/javiersanchezsoriano/traffic-images-captured-from-uavs/data 注意引用
 - 训练数据集（事故）：https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5 注意引用
