@@ -121,12 +121,10 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 
 增加防抖动处理，定义了静止阈值。
 
-改善角度，速度，重合度的计算，使其更准确，更抗干扰（取多值平均），并且添加针对速度的考量作为新的评估维度（同前面三个），
-
 需要解决的问题：
 - **优化代码逻辑，提高推理速度，减少不必要的计算**
 - 尝试使用更加轻量的模型
-- **风险映射参数以及映射方式需要进行调整升级**
+- **风险映射参数以及映射方式需要进行调整升级，风险分数使用模型计算**
 - 继续分析误识别情况的原因
 - 针对不同天气情况，时间，车流密度，以及摄像头低像素情况进行鲁棒性数据增强修改
 - 碰撞算法改进（增加车辆种类，丰富车辆参数）
@@ -136,13 +134,13 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 - **报错信息处理**
 - 增加测试
 - 检查是否有可以用库代替的计算
-- **风险分数使用模型计算**
 
 - 训练数据集（车辆）：https://www.kaggle.com/datasets/javiersanchezsoriano/traffic-images-captured-from-uavs/data 注意引用
 - 训练数据集（事故）：https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5 注意引用
 - 测试视频数据集（车流）：https://wayback.archive-it.org/org-652/20231112205116/https:/detrac-db.rit.albany.edu/
 - 高质量视频数据（高速）：https://www.vecteezy.com/video/1804377-motorway-with-cars-passing-by
 - 数据集（事故测试）：https://github.com/yajunbaby/A-Large-scale-benchmark-for-traffic-accidents-detection-from-video-surveillance?tab=readme-ov-file
+- yolov10：https://arxiv.org/pdf/2405.14458
 - 文章：https://blog.csdn.net/hahabeibei123456789/article/details/103287541 可以了解
 - 文章：https://ar5iv.labs.arxiv.org/html/2308.15985
 - 文章：https://developer.aliyun.com/article/606837
