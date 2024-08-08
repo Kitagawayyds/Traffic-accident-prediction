@@ -179,7 +179,9 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 
 其他设备问题在这里也不再考虑。
 
-当前针对该问题可参考：https://www.jiqizhixin.com/articles/2019-08-01-13
+当前针对该问题可参考：
+- https://www.jiqizhixin.com/articles/2019-08-01-13
+- https://arxiv.org/pdf/1612.00496
 
 ### 映射至风险评分的科学逻辑
 
