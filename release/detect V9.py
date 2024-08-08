@@ -415,7 +415,7 @@ for _ in tqdm(range(total_frames), desc="Processing"):
                 cv2.polylines(annotated_frame, [points], isClosed=False, color=(255, 255, 255), thickness=3)
 
             if show_transform:
-                if len(track) < 3:
+                if len(track) < window_size + 1:
                     continue
                 angle = calculate_angle(track)[1]
                 center = (cx, cy)
