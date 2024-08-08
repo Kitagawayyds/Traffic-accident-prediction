@@ -23,8 +23,8 @@ resting_threshold = 3  # 静止阈值（消除抖动）
 
 window_size = 5  # 角度计算窗口大小
 
-vehicle_length = 4  # 长(汽车)
-vehicle_width = 2  # 宽(汽车)
+vehicle_length = 4  # 长
+vehicle_width = 2  # 宽
 
 sigma = 2  # 轨迹平滑系数
 
@@ -64,6 +64,7 @@ show_matrix = False  # 打印车辆详细日志
 show_collision = False  # 打印碰撞框详细情况
 show_track = False  # 绘制车辆轨迹
 show_transform = True  # 启用映射可视化
+show_region = True  # 显示源区域
 save = False  # 保存推理视频
 smooth = True  # 平滑轨迹
 rt_display = True  # 启用imshow
@@ -100,6 +101,7 @@ config_data = [
     ["Show Detailed Metrics", bool(show_matrix)],
     ["Show Collision Box Details", bool(show_collision)],
     ["Show Vehicle Track", bool(show_track)],
+    ["Show Source Region", bool(show_region)],
     ["Transformation Visualization", bool(show_transform)],
     ["Save Output", bool(save)],
     ["Smooth track", bool(smooth)],
@@ -438,6 +440,8 @@ for _ in tqdm(range(total_frames), desc="Processing"):
     involved_vehicles = set()
 
     accident_plot = accident_results[0].plot()
+    if show_region:
+        cv2.fillPoly(accident_plot, [np.array(SOURCE, dtype=np.int32)], (14, 160, 111))
     annotated_frame = cv2.addWeighted(annotated_frame, 0.5, accident_plot, 0.5, 0)
 
     for result in accident_results:
