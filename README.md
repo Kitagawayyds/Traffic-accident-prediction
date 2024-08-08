@@ -142,7 +142,7 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 - 训练数据集（事故）：https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5 注意引用
 - 测试视频数据集（车流）：https://wayback.archive-it.org/org-652/20231112205116/https:/detrac-db.rit.albany.edu/
 - 高质量视频数据（高速）：https://www.vecteezy.com/video/1804377-motorway-with-cars-passing-by
-- 数据集：https://github.com/yajunbaby/A-Large-scale-benchmark-for-traffic-accidents-detection-from-video-surveillance?tab=readme-ov-file
+- 数据集（事故测试）：https://github.com/yajunbaby/A-Large-scale-benchmark-for-traffic-accidents-detection-from-video-surveillance?tab=readme-ov-file
 - 文章：https://blog.csdn.net/hahabeibei123456789/article/details/103287541 可以了解
 - 文章：https://ar5iv.labs.arxiv.org/html/2308.15985
 - 文章：https://developer.aliyun.com/article/606837
