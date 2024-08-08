@@ -121,6 +121,8 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 
 增加防抖动处理，定义了静止阈值。
 
+![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/V9.gif)
+
 下一个版本急需改进风险评分的函数，比如速度波动和平均速度有很大关系
 
 需要解决的问题：
