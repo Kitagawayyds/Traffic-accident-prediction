@@ -112,8 +112,6 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 
 ![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/accident2.gif)
 
-![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/accident2-t.gif)
-
 ## Version 9
 这一版本接着修复并优化了大量显示类和逻辑类问题，添加了imshow可选功能，与此同时检测事故时过滤掉了轨迹中不稳定的起始值以及最终值并且可选平滑功能，使得轨迹更加符合现实。
 
