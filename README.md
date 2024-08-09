@@ -128,6 +128,8 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 
 再者对于映射后代表车辆轨迹的中心点的计算逻辑进行了修正，更贴合车辆本身的运行方式。（详情看研究记录）
 
+![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/V10.gif)
+
 **评分函数逻辑（四分数转换总分数的过程），映射轨迹增加，角度计算处理（高速上细小角度的变化会带来非常大的危险），获取指定车辆的完整轨迹**
 
 需要解决的问题：
