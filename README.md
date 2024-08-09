@@ -150,18 +150,24 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 ## 参考资料
 
 - 车辆跟踪识别尝试使用3D预测模型，https://docs.ultralytics.com/datasets/detect/argoverse/
-- 训练数据集（车辆）：https://www.kaggle.com/datasets/javiersanchezsoriano/traffic-images-captured-from-uavs/data 注意引用
-- 训练数据集（事故）：https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5 注意引用
+- 训练数据集（车辆）：https://www.kaggle.com/datasets/javiersanchezsoriano/traffic-images-captured-from-uavs/data
+- 训练数据集（事故）：https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5
 - 测试视频数据集（车流）：https://wayback.archive-it.org/org-652/20231112205116/https:/detrac-db.rit.albany.edu/
 - 高质量视频数据（高速）：https://www.vecteezy.com/video/1804377-motorway-with-cars-passing-by
 - 数据集（事故测试）：https://github.com/yajunbaby/A-Large-scale-benchmark-for-traffic-accidents-detection-from-video-surveillance?tab=readme-ov-file
 - yolov10：https://arxiv.org/pdf/2405.14458
-- 文章：https://blog.csdn.net/hahabeibei123456789/article/details/103287541 可以了解
+- 文章：https://blog.csdn.net/hahabeibei123456789/article/details/103287541
 - 文章：https://ar5iv.labs.arxiv.org/html/2308.15985
 - 文章：https://developer.aliyun.com/article/606837
 - 文章：https://arxiv.org/pdf/2407.17757
 - 文章：https://arxiv.org/pdf/2002.10111
+- 文章：https://www.jiqizhixin.com/articles/2019-08-01-13
+- 文章：https://arxiv.org/pdf/1612.00496
+- 文章：https://sjcj.nuaa.edu.cn/html/2018/2/20180220.htm
 - 项目：https://github.com/HuangJunJie2017/BEVDet
+- 项目：https://github.com/skhadem/3D-BoundingBox
+- 项目：https://github.com/ruhyadi/yolo3d-lightning
+- 项目：https://github.com/zhangyp15/MonoFlex/tree/main
 
 ## 研究记录
 
@@ -194,10 +200,6 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 除此以外，还存在视觉误差问题，即`BC`和`B'C'`在图像中并非等长，这里的误差是视距带来的（想象一下等待火车进站），但因为过小，且计算成本过大，在这里不再考虑，近似做相等。
 
 其他设备问题在这里也不再考虑。
-
-当前针对该问题可参考：
-- https://www.jiqizhixin.com/articles/2019-08-01-13
-- https://arxiv.org/pdf/1612.00496
 
 常见针对该问题的方法，用于单目检测的BEVdet，yolo3D，SMOKE，MonoDLE等等，大致方向是基于2D的模型增加深度感知层，使用像nuscense或者argoverse这种雷达扫描的点云类型的数据集进行训练。不过推理速度过慢，而且现阶段以我的知识储备和代码能力有难度直接修改模型架构，需要大量时间，因此通过数学角度进行了优化：
 
