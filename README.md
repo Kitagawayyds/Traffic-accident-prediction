@@ -148,6 +148,7 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 - 文章：https://ar5iv.labs.arxiv.org/html/2308.15985
 - 文章：https://developer.aliyun.com/article/606837
 - 文章：https://arxiv.org/pdf/2407.17757
+- 文章https://arxiv.org/pdf/2002.10111
 
 ## 研究记录
 
