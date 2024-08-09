@@ -199,7 +199,7 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 - https://www.jiqizhixin.com/articles/2019-08-01-13
 - https://arxiv.org/pdf/1612.00496
 
-常见针对该问题的方法，用于单目检测的BEVdet，yolo3D，SMOKE，MonoDLE等等，大致方向是基于2D的模型增加深度感知层，使用像nuscense或者argoverse这种雷达扫描的点云类型的数据集进行训练。不过推理速度过慢，而且现阶段有难度直接修改模型架构，需要大量时间，因此通过数学角度进行了优化：
+常见针对该问题的方法，用于单目检测的BEVdet，yolo3D，SMOKE，MonoDLE等等，大致方向是基于2D的模型增加深度感知层，使用像nuscense或者argoverse这种雷达扫描的点云类型的数据集进行训练。不过推理速度过慢，而且现阶段以我的知识储备和代码能力有难度直接修改模型架构，需要大量时间，因此通过数学角度进行了优化：
 
 ![1.png](https://s2.loli.net/2024/08/09/FwJ5qmoMxb69A1l.png)
 
