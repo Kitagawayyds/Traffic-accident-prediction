@@ -122,7 +122,11 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 ![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/V9.gif)
 
 ## Version 10
-这个版本首先重写了整个风险评分计算的逻辑，更加符合程序运行时的情况。增加了更多的自定义参数方便根据输入实际情况进行调整。再者暂时去掉了上个版本对于轨迹的剪切，经过分析会影响时间一致性，正在寻找解决方案。
+这个版本首先重写了整个风险评分计算的逻辑，更加符合程序运行时的情况。增加了更多的自定义参数方便根据输入实际情况进行调整。
+
+![Figure_1.png](https://s2.loli.net/2024/08/09/3AVaCTYPW4Kp6kf.png)
+
+再者暂时去掉了上个版本对于轨迹的剪切，经过分析会影响时间一致性，正在寻找解决方案。
 
 尝试双平滑或者后检验平滑取代前平滑，中心点计算调整。
 
