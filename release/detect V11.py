@@ -510,7 +510,7 @@ for _ in tqdm(range(total_frames), desc="Processing"):
     accident_plot = accident_results[0].plot()
     if show_region:
         cv2.fillPoly(accident_plot, [np.array(SOURCE, dtype=np.int32)], (14, 160, 111))
-    annotated_frame = cv2.addWeighted(annotated_frame, 0.5, accident_plot, 0.5, 0)
+        annotated_frame = cv2.addWeighted(annotated_frame, 0.5, accident_plot, 0.5, 0)
 
     for result in accident_results:
         boxes_acc = result.boxes
