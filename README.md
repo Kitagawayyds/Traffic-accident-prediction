@@ -225,7 +225,17 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 
 ![display](https://s2.loli.net/2024/08/09/gQwmi91PCHefTBq.png)
 
-要想办法将这种影响消除
+要想办法将这种影响消除。
+
+为了获取更稳定的轨迹，基本考虑三种情况：
+- 先平滑后转换
+- 先转换后平滑
+- 先平滑后转换再平滑
+简单的对比一下:
+
+![Figure_1.png](https://s2.loli.net/2024/08/12/u8PtnyAOQIc7D3B.png)
+
+在single V1版本以后开始采用双平滑
 
 ### 映射至风险评分的科学逻辑
 
