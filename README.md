@@ -235,6 +235,12 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 
 在single V1版本以后开始采用双平滑
 
+除此以外，在识别远距离车辆以及车辆在部分遮挡的的时候轨迹依旧会出现问题：
+
+![Figure_1.png](https://s2.loli.net/2024/08/12/E92IOx4WQz6nfP5.png)
+
+![Figure_2.png](https://s2.loli.net/2024/08/12/Elv3ezFObZaDRPM.png)
+
 ### 映射至风险评分的科学逻辑
 
 1. 角度变化与速度的关系：
