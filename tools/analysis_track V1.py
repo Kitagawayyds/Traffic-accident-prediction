@@ -58,7 +58,7 @@ def smooth_track(track, sigma):
     return smoothed_track
 
 def plot_smoothed_and_transformed_tracks(smoothed_track, transformed_track):
-    fig, axs = plt.subplots(1, 2, figsize=(20, 10))
+    fig, axs = plt.subplots(1, 2, figsize=(16, 8), gridspec_kw={'wspace': 0.05})
 
     # Determine the limits for the x and y axes based on SOURCE and TARGET
     x_limits = [SOURCE[0, 0], SOURCE[2, 0]]
@@ -82,7 +82,7 @@ def plot_smoothed_and_transformed_tracks(smoothed_track, transformed_track):
     axs[0].legend()
     axs[0].grid(True)
     axs[0].invert_yaxis()
-    axs[0].set_aspect('equal')
+    axs[0].set_aspect('auto')  # Adjust aspect ratio to fill the space
 
     # Plot transformed track
     transformed_x = [p[0] for p in transformed_track]
@@ -102,7 +102,7 @@ def plot_smoothed_and_transformed_tracks(smoothed_track, transformed_track):
     axs[1].legend()
     axs[1].grid(True)
     axs[1].invert_yaxis()
-    axs[1].set_aspect('equal')
+    axs[1].set_aspect('auto')  # Adjust aspect ratio to fill the space
 
     plt.tight_layout()
     plt.show()
