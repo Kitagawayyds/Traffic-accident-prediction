@@ -68,8 +68,8 @@ def is_vehicle_in_region(point, region):
 def parse_arguments():
     parser = argparse.ArgumentParser(description="ARMS")
 
-    parser.add_argument('--vehicle_model', type=str, default="yolov10x.pt", help="Path to the vehicle detection model")
-    parser.add_argument('--video_path', type=str, default="accident3.mp4", help="Path to the input video file")
+    parser.add_argument('--vehicle_model', type=str, default="yolov10n.pt", help="Path to the vehicle detection model")
+    parser.add_argument('--video_path', type=str, default="accident2.mp4", help="Path to the input video file")
     parser.add_argument('--output_path', type=str, default="output.mp4", help="Path to the output video file")
     parser.add_argument('--transform_path', type=str, default='transform.mp4', help="Path to the transformation video")
     parser.add_argument('--transform_file_path', type=str, default='transform.txt', help="Path to the transformation file")
@@ -85,7 +85,7 @@ def parse_arguments():
     |(0,y)     (x,y)|
     +---------------+
     '''
-    parser.add_argument('--target_fps', type=int, default=10, help="Frame rate for video processing")
+    parser.add_argument('--target_fps', type=int, default=20, help="Frame rate for video processing")
 
     parser.add_argument('--risk_threshold', type=float, default=6, help="Risk threshold value")
     parser.add_argument('--speed_threshold', type=float, default=100, help="Speed threshold value")
@@ -477,9 +477,10 @@ def bb_overlap(center1, center2, angle1, angle2, class1, class2):
 
     rect_area1 = length1 * width1
     rect_area2 = length2 * width2
-    overlap_ratio = intersection_area / max(rect_area1, rect_area2)
+    overlap_ratio_1 = intersection_area / rect_area1
+    overlap_ratio_2 = intersection_area / rect_area2
 
-    return overlap_ratio
+    return max(overlap_ratio_1, overlap_ratio_2)
 
 
 # 计算风险评分
@@ -546,9 +547,6 @@ def detect_accidents(track_history, boxes, class_name):
         if len(track) < 5:
             continue
 
-        vehicle_type = class_name[track_id]
-        length, width = vehicle_specs.get(vehicle_type, default_specs)
-
         speed, fluctuation = calculate_speed(track)
         if speed < resting_threshold:
             angle_change = 0
@@ -558,6 +556,8 @@ def detect_accidents(track_history, boxes, class_name):
         if show_transform:
             center = track[-1]
             center = (center[0] + margin, center[1] + margin)
+            vehicle_type = class_name[track_id]
+            length, width = vehicle_specs.get(vehicle_type, default_specs)
             polygon = create_rectangle(center, length, width, current_angle)
             polygon_points = np.array(polygon.exterior.coords, dtype=np.int32)
             cv2.polylines(frame_t, [polygon_points], isClosed=True, color=(0, 255, 0), thickness=2)
@@ -642,6 +642,7 @@ for _ in tqdm(range(total_frames), desc="Processing"):
     # 车辆检测
     vehicle_results = vehicle_model.track(annotated_frame, persist=True, tracker='botsort.yaml', verbose=False)
     boxes = {}
+    class_names = {}
     if show_region:
         cv2.fillPoly(frame, [np.array(SOURCE, dtype=np.int32)], (14, 160, 111))
     if vehicle_results[0].boxes.id is not None:
