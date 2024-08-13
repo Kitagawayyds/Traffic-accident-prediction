@@ -145,6 +145,8 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 
 同时，针对于碰撞框生成，现在将根据检测对象的具体类型进行生成，生成的具体参数依照参数文件`spec.txt`，其中分为else和非else参数，非else函数包含了主要关注的对象。
 
+![ 2024-08-13 162411.png](https://s2.loli.net/2024/08/13/mDkAz2l13NtaFPE.png)
+
 至此整个程序已趋近于完善，下面的工作主要以查找bug和逻辑错误，完整性检查，封包解耦，以及报错处理为主。
 
 需要解决的问题：
@@ -158,6 +160,7 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 - **报错信息处理**
 - **增加测试**
 - 检查是否有可以用库代替的计算
+- 生成requirement.txt
 
 
 ## 参考资料
