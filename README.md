@@ -140,6 +140,9 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 
 ![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/singleV1.gif)
 
+## Single V2
+在这个版本首先修复了轨迹显示问题，其次对代码进行了封装，可以直接在命令台上设置运行参数了。关于映射区域的参数和放大系数现在直接通过`transform.txt`文件进行读取，更加便捷。添加了报错处理，可以更好地发现问题。
+
 需要解决的问题：
 - 优化代码逻辑，提高推理速度，减少不必要的计算
 - 尝试使用更加轻量的模型
@@ -153,7 +156,7 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 - **增加测试**
 - 检查是否有可以用库代替的计算
 
-下面的版本需要不断优化调整参数，针对不同的视频进行更多地测试，同时轨迹显示有问题，只显示检测到的车的轨迹
+下面的版本需要不断优化调整参数，针对不同的视频进行更多地测试。
 
 ## 参考资料
 
@@ -165,6 +168,7 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 - 数据集（事故测试）：https://github.com/yajunbaby/A-Large-scale-benchmark-for-traffic-accidents-detection-from-video-surveillance?tab=readme-ov-file
 - yolov10：https://arxiv.org/pdf/2405.14458
 - 文章：https://blog.csdn.net/hahabeibei123456789/article/details/103287541
+- 文章：https://blog.csdn.net/qq_39523365/article/details/129733150
 - 文章：https://ar5iv.labs.arxiv.org/html/2308.15985
 - 文章：https://developer.aliyun.com/article/606837
 - 文章：https://arxiv.org/pdf/2407.17757
