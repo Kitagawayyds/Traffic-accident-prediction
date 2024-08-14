@@ -150,6 +150,8 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 ## Single V3
 在这个版本首先调整了针对于镜头抖动导致的重叠度误判问题，其次在映射视频中增加了非常多的信息以便更直观地进行分析。
 
+![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/singleV3.gif)
+
 至此整个程序已趋近于完善，下面的工作主要以查找bug和逻辑错误，完整性检查，封包解耦，以及报错处理，**前端制作**为主。
 
 增加映射视频的信息，比如id以及类型，或者碰撞显示
