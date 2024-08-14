@@ -173,6 +173,7 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 - 测试视频数据集（车流）：https://wayback.archive-it.org/org-652/20231112205116/https:/detrac-db.rit.albany.edu/
 - 高质量视频数据（高速）：https://www.vecteezy.com/video/1804377-motorway-with-cars-passing-by
 - 数据集（事故测试）：https://github.com/yajunbaby/A-Large-scale-benchmark-for-traffic-accidents-detection-from-video-surveillance?tab=readme-ov-file
+- 3D数据集：https://thudair.baai.ac.cn/roadtest
 - yolov10：https://arxiv.org/pdf/2405.14458
 - 文章：https://blog.csdn.net/hahabeibei123456789/article/details/103287541
 - 文章：https://blog.csdn.net/qq_39523365/article/details/129733150
@@ -187,6 +188,7 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 - 项目：https://github.com/skhadem/3D-BoundingBox
 - 项目：https://github.com/ruhyadi/yolo3d-lightning
 - 项目：https://github.com/zhangyp15/MonoFlex/tree/main
+- 项目：https://github.com/maudzung/Complex-YOLOv4-Pytorch
 
 ## 研究记录
 
