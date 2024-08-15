@@ -152,6 +152,10 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 
 ![display](https://github.com/Kitagawayyds/Traffic-accident-prediction/blob/main/gif/singleV3.gif)
 
+## ARMS V1
+此版本为正式版，为程序添加了前端，以便更好地操作，同时添加了实时检测模式，更符合实际应用中的情况。详情请看代码。
+运行方式：$$streamlit run ARMSV1.py$$
+
 至此整个程序已趋近于完善，下面的工作主要以查找bug和逻辑错误，完整性检查，封包解耦，以及报错处理，**前端制作**为主。
 
 增加映射视频的信息，比如id以及类型，或者碰撞显示
