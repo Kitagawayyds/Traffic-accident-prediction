@@ -195,6 +195,7 @@ ARMS，全称是 "Accident Risk Monitoring System"（事故风险监控系统）
 - 项目：https://github.com/ruhyadi/yolo3d-lightning
 - 项目：https://github.com/zhangyp15/MonoFlex/tree/main
 - 项目：https://github.com/maudzung/Complex-YOLOv4-Pytorch
+- streamlit库使用：https://blog.csdn.net/weixin_44458771/article/details/135495928
 
 ## 研究记录
 
