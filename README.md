@@ -180,6 +180,7 @@ streamlit run ARMSV1.py
 - **增加测试**
 - 检查是否有可以用库代替的计算
 - 生成requirement.txt
+- 解决检测框闪烁问题
 
 
 ## 参考资料
