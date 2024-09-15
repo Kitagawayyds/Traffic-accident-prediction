@@ -274,6 +274,7 @@ $$
 $$
 
 其中：
+
 - $$\sigma_v $$：速度波动的标准差，表示速度变化的离散程度。
 - $$v_i $$：第 $$i $$ 帧的速度。
 - $$\bar{v} $$：平均速度。
@@ -328,6 +329,7 @@ $$
 $$
 
 其中：
+
 - $$ (x_1, y_1) $$，$$ (x_2, y_2) $$，$$ (x_3, y_3) $$ 分别表示连续三个轨迹点的坐标；
 - 分子表示这三个点形成的三角形面积的两倍；
 - 分母表示与三角形相邻的边长的平方和乘积。
@@ -353,6 +355,7 @@ $$
 $$
 
 其中：
+
 - $$ A_{\text{intersection}} $$ 是两个检测框的交集区域面积；
 - $$ A_{\text{union}} $$ 是两个检测框的并集区域面积。
 
@@ -363,6 +366,7 @@ $$
 $$
 
 其中：
+
 - $$ A_1 $$ 和 $$ A_2 $$ 分别表示两个车辆的检测框面积；
 - $$ A_1 \cap A_2 $$ 表示两个检测框的交集区域面积。
 
@@ -464,10 +468,10 @@ $$
 - $$S_{\text{avg}}$$ 是速度、波动、角度、曲率及重叠度评分的平均值；
 - $$S_{\text{max}}$$ 是这些评分中的最大值。
 
-​	使用**最大风险因子法**的原因：
+​	使用最大风险因子法的原因：
 
 1. **突出最高风险**：最大风险因子法确保了在所有评分中最严重的风险因素对综合评分的影响。这可以有效地反映出在多种风险因素中最严重的那个，从而给出一个更保守的安全评估。
-   
+
 2. **平衡评分**：通过同时考虑平均评分和最大评分，可以平衡整体风险的平滑性和最坏情况的突发性。平均评分考虑了所有风险因素的整体表现，而最大评分强调了最严重的风险点。
 
 3. **增强鲁棒性**：综合考虑最大评分和平均评分，有助于提高系统对极端情况的鲁棒性，确保综合评分能够在高风险情况下仍然保持准确性。
@@ -496,46 +500,47 @@ $$
    - 若启用了视频保存功能，则保存该帧和后续的数帧至本地文件。
 
 ### 3.6 系统优化与事故检测模型的改进
+
 ​	为了提高计算效率与检测准确性，本研究还进行了以下优化：
 
 1. **矢量化计算：** 
-   
+
    为了提升计算速度和效率，对速度和角度变化的计算进行矢量化处理，避免使用不必要的循环。矢量化计算利用 NumPy 的数组操作和函数，从而显著加快计算过程。
-   
+
 2. **轨迹平滑处理：** 
-   
+
    为了减少噪声和抖动的影响，对车辆轨迹进行双重平滑处理，即先对原始轨迹进行平滑，再对转换后的轨迹进行平滑。具体的平滑处理使用的是高斯滤波函数，其公式如下：
-   
+
    1. **高斯滤波函数：**
-   
+
       高斯滤波是一种基于高斯分布的平滑方法，其滤波函数为：
-   
+
       $$
       G(x; \sigma) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{x^2}{2 \sigma^2}}
       $$
-   
+
       其中，$$\sigma$$ 是高斯滤波器的标准差，控制平滑的程度。标准差越大，平滑效果越明显。
-   
+
    2. **轨迹平滑：**
-   
+
       对于轨迹的平滑处理，可以分别对轨迹的 x 坐标和 y 坐标应用高斯滤波。设原始轨迹为一系列点的集合 $$(x_i, y_i)$$，平滑处理后的轨迹 $$(x'_i, y'_i)$$ 使用以下公式：
-   
+
       $$
       x'_i = \frac{1}{\sqrt{2 \pi \sigma^2}} \int_{-\infty}^{\infty} x \cdot e^{-\frac{(x - x_i)^2}{2 \sigma^2}} \, dx
       $$
-   
+
       $$
       y'_i = \frac{1}{\sqrt{2 \pi \sigma^2}} \int_{-\infty}^{\infty} y \cdot e^{-\frac{(y - y_i)^2}{2 \sigma^2}} \, dy
       $$
-   
+
       其中，$$x'_i$$ 和 $$y'_i$$ 分别为平滑后的 x 坐标和 y 坐标。
-   
+
 3. **自定义风险阈值：** 
-   
+
    提供自定义的风险阈值设置，允许根据不同场景动态调整事故检测的灵敏度。
-   
+
 4. **防抖动处理：** 
-   
+
    通过定义静止阈值，避免检测到虚假事故信号，尤其是在车辆静止时。
 
 ​	本章节介绍了本研究的核心算法，包括视角转换的数学模型、车辆物理特性提取、各类风险评分函数以及综合风险计算公式。此外，提出了优化措施来提高系统的计算效率和事故检测的准确性，为下一步的实验和结果分析奠定了基础。
@@ -546,42 +551,41 @@ $$
 
 #### 4.1.1 数据集
 
-- 数据集的来源与特点
-- 数据预处理与增强
+​	在实验中总共用到了两个数据集：COCO 2017数据集[18]和TAD事故数据集[19]，分别用于训练模型识别车辆和对系统效果进行检验。
+
+​	COCO 2017数据集广泛用于计算机视觉任务，如目标检测、图像分割等。它包含了大量日常场景的图像，图像中有各种常见物体的实例分割标注。本次任务为目标检测，在coco数据集中提取了。。。。。等类别作为子集进行训练，其中训练，验证，测试。。。。
+
+​	TAD事故数据集是一个大规模的开源交通事故视频数据集，与UCF-Crime[20]、CADP[21]和DAD[22]等其他交通事故数据集相比，提供了更丰富的事故类型和场景。视频数据来自不同的监控摄像头，包括从交通视频分析平台和主流视频分享网站（如微博）上收集的数据。其中包含333个视频，分辨率从(862,530)到(1432,990)不等，涵盖261个包含交通事故的样本，包含了丰富的场景和详细的标注信息，旨在推动智能交通系统（ITS）的发展和提高交通安全，同时为计算机视觉研究提供了新的挑战和基准。
 
 #### 4.1.2 实验环境
 
-- 实验硬件环境
-- 实验软件环境
+​	本文所有的实验均在如下配置的计算机上进行，具体系统和设备参数如下：Windows 11，version 23H2操作系统，采用英特尔(R)酷睿(TM)i5-13400@4.60GHz CPU以及NVIDIA GeForce RTX 4070Ti (12G) GPU，内存为64G。关于数据处理和算法实现的代码均基于python3.11.5编写以及基于Pytorch2.0.1深度学习框架实现。
+
+​	**说明代码训练时使用的训练策略**
 
 ### 4.2 性能评估
 
-#### 4.2.1 检测准确率
-
-- 检测准确率的计算方法
-- 检测准确率的结果分析
-
-#### 4.2.2 风险评估准确率
-
-- 风险评估准确率的评估标准
-- 风险评估准确率的实验结果
+训练速度，分模块评估
 
 ### 4.3 实验结果
 
 #### 4.3.1 检测结果
 
-- 车辆检测的实验结果
-- 检测结果的可视化展示
+- **车辆检测的实验结果**  
+  模型能够准确地检测出视频中的车辆，并给出车辆的位置和尺寸信息。
+
+- **检测结果的可视化展示**  
+  通过可视化的方式，将检测结果叠加在原始视频上，可以直观地展示模型的检测效果。
 
 #### 4.3.2 风险评估结果
 
-- 风险评估的实验结果
-- 风险评估结果的可视化展示
+- **风险评估的实验结果**  
+  模型能够根据车辆的运动状态和周围环境，有效地评估出交通事故的风险等级。
 
-### 4.4 案例分析
+- **风险评估结果的可视化展示**  
+  通过不同颜色的标记，将风险等级直观地展示在视频上，帮助用户快速识别潜在的高风险区域。
 
-- 典型事故案例的选择
-- 案例分析的详细过程
+### 4.4 对比
 
 ## 第5章 讨论
 
@@ -626,7 +630,7 @@ $$
 
 [6] Bemposta Rosende, S.; Ghisler, S.; Fernández-Andrés, J.; Sánchez-Soriano, J. Dataset: Traffic Images Captured from UAVs for Use in Training Machine Vision Algorithms for Traffic Management. *Data* 2022, *7*, 53. https://doi.org/10.3390/data7050053
 
-[7] Arsalan Mousavian, Dragomir Anguelov, John Flynn, and Jana Kosecka. "3D Bounding Box Estimation Using Deep Learning and Geometry." arXiv preprint arXiv:1612.00496 (2017). Available at: https://arxiv.org/abs/1612.00496.
+[7] A. Mousavian, D. Anguelov, J. Flynn and J. Košecká, "3D Bounding Box Estimation Using Deep Learning and Geometry," *2017 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)*, Honolulu, HI, USA, 2017, pp. 5632-5640, doi: 10.1109/CVPR.2017.597.
 
 [8] WANG Chen, ZHOU Wei, YAN Jun-yi, GONG Yao-hui. Improved Two-stream Network for Vision-based Traffic Accident Detection[J]. *China Journal of Highway and Transport*, 2023, 36(5): 185-196 https://doi.org/10.19721/j.cnki.1001-7372.2023.05.016
 
@@ -644,9 +648,23 @@ $$
 
 [15] Yunpeng Zhang, Jiwen Lu, and Jie Zhou. "Objects Are Different: Flexible Monocular 3D Object Detection." In *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)*, 3289-3298, June 2021.
 
-[16] Holger Caesar, Varun Bankiti, Alex H. Lang, Sourabh Vora, Venice Erin Liong, Qiang Xu, Anush Krishnan, Yu Pan, Giancarlo Baldan, and Oscar Beijbom. "nuScenes: A multimodal dataset for autonomous driving." arXiv preprint arXiv:1903.11027 (2020). Available at: https://arxiv.org/abs/1903.11027.
+[16] H. Caesar *et al*., "nuScenes: A Multimodal Dataset for Autonomous Driving," *2020 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)*, Seattle, WA, USA, 2020, pp. 11618-11628, doi: 10.1109/CVPR42600.2020.01164.
 
-[17] Ming-Fang Chang, John W. Lambert, Patsorn Sangkloy, Jagjeet Singh, Slawomir Bak, Andrew Hartnett, De Wang, Peter Carr, Simon Lucey, Deva Ramanan, and James Hays. "Argoverse: 3D Tracking and Forecasting with Rich Maps." In *Proceedings of the Conference on Computer Vision and Pattern Recognition (CVPR)*, 2019.
+[17] Ming-Fang Chang, John W. Lambert, Patsorn Sangkloy, Jagjeet Singh, Slawomir Bak, Andrew Hartnett, De Wang, Peter Carr, Simon Lucey, Deva Ramanan, and James Hays. "Argoverse: 3D Tracking and Forecasting with Rich Maps." In *Proceedings of the Conference on Computer Vision and Pattern Recognition (CVPR)*, 2019.\
+
+[18] Lin, TY. *et al.* (2014). Microsoft COCO: Common Objects in Context. In: Fleet, D., Pajdla, T., Schiele, B., Tuytelaars, T. (eds) Computer Vision – ECCV 2014. ECCV 2014. Lecture Notes in Computer Science, vol 8693. Springer, Cham. https://doi.org/10.1007/978-3-319-10602-1_48
+
+[19] Yajun Xu, Chuwen Huang, Yibing Nan, and Shiguo Lian. "TAD: A Large-Scale Benchmark for Traffic Accidents Detection from Video Surveillance." arXiv preprint arXiv:2209.12386*, 2022. Available at: https://arxiv.org/abs/2209.12386.
+
+[20] W. Sultani, C. Chen and M. Shah, "Real-World Anomaly Detection in Surveillance Videos," *2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition*, Salt Lake City, UT, USA, 2018, pp. 6479-6488, doi: 10.1109/CVPR.2018.00678.
+
+[21] Ankit Shah*, Jean Baptiste Lamare*, Tuan Nyugen Anh*, Alexander Hauptmann “CADP: A Novel Dataset for CCTV Traffic Camera based Accident Analysis” International Workshop on Traffic and Street Surveillance for Safety and Security, Nov 2018.
+
+[22] Okan Kopuklu, Jiapeng Zheng, Hang Xu, and Gerhard Rigoll. "Driver anomaly detection: A dataset and contrastive learning approach." In *Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision*, pages 91-100, 2021.
+
+**接着加，比如计算方式这一块**
+
+## 附录
 
 ### A 实验代码
 
